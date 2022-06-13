@@ -37,10 +37,10 @@ public class Main {
 
         for (int i = 0; i < arr.length ; i++) {
             for (int j = 0; j < arr[i].length; j++) {
-                arr[i][j] = String.valueOf(rnd.nextInt(20));
+                arr[i][j] = String.valueOf(rnd.nextInt(10));
             }
         }
-       arr[1][0] = "s";
+      // arr[1][0] = "s";
 
         try {
             System.out.println(method(arr));
