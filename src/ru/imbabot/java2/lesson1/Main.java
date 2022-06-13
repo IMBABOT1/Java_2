@@ -22,8 +22,8 @@ public class Main {
         obstacles[1] = new Wall();
         obstacles[2] = new Treadmill();
 
-        for (Obstacle o: obstacles){
-            for (Participant p: participants){
+        for (Participant p : participants){
+            for (Obstacle o : obstacles){
                 o.doIt(p);
             }
         }
