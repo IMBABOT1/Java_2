@@ -12,8 +12,8 @@ public class ArrThread implements Runnable{
 
     @Override
     public void run() {
-        for (int i = offset; i < arr.length; i++) {
-            arr[i] = (float)(arr[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = (float)(arr[i] * Math.sin(0.2f + (i +offset) / 5) * Math.cos(0.2f + (i + offset) / 5) * Math.cos(0.4f + (i + offset) / 2));
         }
     }
 }

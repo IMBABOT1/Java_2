@@ -4,16 +4,15 @@ import java.util.Arrays;
 
 public class Main {
 
-    private static final int SIZE = 10000000;
-    private static final int H = SIZE/2;
-    private static final float[] arr = new float[SIZE];
 
-    private static float[] first = new float[SIZE];
-    private static float[] second = new float[SIZE];
+
+
+
 
 
     private static void method1(){
-
+        int size = 10000000;
+        final float[] arr = new float[size];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = 1;
         }
@@ -41,17 +40,23 @@ public class Main {
     }
 
     private static String method2(){
+        int size = 10000000;
+        final float[] arr = new float[size];
+        int h = size / 2;
+
         for (int i = 0; i < arr.length ; i++) {
             arr[i] = 1;
         }
 
         long a = System.currentTimeMillis();
-        System.arraycopy(arr, 0, first, 0, H);
-        System.arraycopy(arr, H, second, H, H);
+        float[] first = new float[h];
+        float[] second = new float[h];
+        System.arraycopy(arr, 0, first, 0, h);
+        System.arraycopy(arr, h, second, 0, h);
 
 
         Thread t = new Thread(new ArrThread(first, 0));
-        Thread t2 = new Thread(new ArrThread(second, H));
+        Thread t2 = new Thread(new ArrThread(second, h));
         t.start();
         t2.start();
 
@@ -63,18 +68,18 @@ public class Main {
         }
 
 
-        System.arraycopy(first, 0, arr, 0, H);
-        System.arraycopy(second, H, arr, H, H);
+        System.arraycopy(first, 0, arr, 0, h);
+        System.arraycopy(second, 0, arr, h, h);
 
         long time = System.currentTimeMillis() - a;
 
-        float second = 0;
+        float temp = 0;
         for (int i = 0; i <arr.length ; i++) {
-            second += arr[i];
+            temp += arr[i];
         }
 
 
-        System.out.println(second);
+        System.out.println(temp);
 
         return time + " " + second;
     }
